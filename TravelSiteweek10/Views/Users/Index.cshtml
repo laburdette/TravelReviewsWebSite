@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TravelSiteweek10.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Write your own review here", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.AccomodationType)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.TookChildren)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)<br />
+         
+            @Html.ActionLink("Read the review!", "Reviews", "Home", null, new { @class = "btn btn-primary btn-md btn-block" })
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.LocationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.AccomodationType)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.TookChildren)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserName }) |
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserName })
+        </td>
+    </tr>
+}
+
+</table>
